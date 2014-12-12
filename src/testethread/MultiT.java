@@ -90,6 +90,5 @@ public class MultiT implements Runnable {
     @Override
     public void run() {
         tenta(getUrlT(),this.id);
-        System.out.println("Thread "+ this.id +" acabou");
     }
 }
