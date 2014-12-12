@@ -8,6 +8,7 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -15,10 +16,11 @@ import java.net.URL;
  */
 public class MultiT implements Runnable {
     
-    private String urlT;
+    private String urlT, id;
 
-    public MultiT(String urlT) {
+    public MultiT(String urlT, String id) {
         this.urlT = urlT;
+        this.id = id;
     }
     
     public String getUrlT(){
@@ -43,11 +45,11 @@ public class MultiT implements Runnable {
         }
     }
 
-    public void tenta(String hue){
+    public void tenta(String hue, String id){
 
         System.out.print("\nVerificando o link: " + hue);
         boolean wot=false;
-        String nomeArquivo = "legenda.rar";
+        String nomeArquivo = "legenda_"+id;
         try{
             wot = checaLink(hue);
         }catch(IOException vish){
@@ -75,8 +77,9 @@ public class MultiT implements Runnable {
                 FileOutputStream fos = new FileOutputStream(nomeArquivo);
                 fos.write(response);
                 fos.close();
-                System.out.println("\nLegenda baixada. Obrigado");
-                System.exit(0);
+                JOptionPane.showMessageDialog(null,"\nLegenda " + id +" baixada. Obrigado");
+                
+                //System.exit(0);
             }catch(IOException exce){
                    System.out.println(exce);
             }
@@ -86,6 +89,7 @@ public class MultiT implements Runnable {
 
     @Override
     public void run() {
-        tenta(getUrlT());
+        tenta(getUrlT(),this.id);
+        System.out.println("Thread "+ this.id +" acabou");
     }
 }
