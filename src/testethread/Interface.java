@@ -163,7 +163,7 @@ public class Interface extends javax.swing.JFrame {
             }
             
             try{
-                Thread.sleep(5000);
+                Thread.sleep(4000);
             }catch (InterruptedException ex){
                 Logger.getLogger(MultiT.class.getName()).log(Level.SEVERE, null, ex);
             }
