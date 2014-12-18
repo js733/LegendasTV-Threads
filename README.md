@@ -20,8 +20,10 @@ Informações de data e hora em que a legenda foi postada no site. Consulte imag
 
 4.2.3  Ainda no mesmo nível, execute utilizando:    java testethread.TesteThread
        Fica assim: z@D:~/LegendasTV-Threads/src$ java testethread.TesteThread
-==================
-
+       
+       
+       
 Abraços, grande Checchia!
 
 Z.
+==================
