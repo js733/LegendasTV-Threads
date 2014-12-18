@@ -1,12 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package testethread;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 
 /**
@@ -163,18 +156,9 @@ public class Interface extends javax.swing.JFrame {
         txtMinuto.setText("");
         txtHora.requestFocus();
         
-        for(int j=0;j<60;j+=20){
-            for(int i=j;i<j+20;i++){
+        for(int i=0;i<60;i++){
                 MultiT proc = new MultiT(testeLegenda[i], i+"");
                 new Thread(proc).start();
-            }
-            
-            try{
-                Thread.sleep(2000);
-            }catch (InterruptedException ex){
-                Logger.getLogger(MultiT.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            
         }
              
     }//GEN-LAST:event_jButBaixarActionPerformed

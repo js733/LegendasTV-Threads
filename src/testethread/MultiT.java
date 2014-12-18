@@ -16,30 +16,23 @@ import javax.swing.JOptionPane;
  */
 public class MultiT implements Runnable {
     
-    private String urlT, id, nome="leg";
+    private String urlT, id, nome;
 
     public MultiT(String urlT, String id) {
         this.urlT = urlT;
         this.id = id;
-    }
-    
-    public String getUrlT(){
-        return this.urlT;
-    }
-    
-    
+    }    
     
     public boolean checaLink(String urlString) throws MalformedURLException, IOException {
 
         URL u = new URL(urlString);
         HttpURLConnection huc =  (HttpURLConnection)  u.openConnection();
         huc.setRequestMethod("HEAD");
-        
-   
         huc.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows; U; Windows NT 6.0; en-US; rv:1.9.1.2) Gecko/20090729 Firefox/3.5.2 (.NET CLR 3.5.30729)");
         huc.connect();
+        
         if(huc.getResponseCode() == HttpURLConnection.HTTP_OK){
-            System.out.print("\nLink encontrado! Baixando...");
+            System.out.print("\n\nLink encontrado! Baixando...");
             nome = u.getFile().substring(3, 29);
             return true;
         }else{
@@ -92,6 +85,6 @@ public class MultiT implements Runnable {
 
     @Override
     public void run() {
-        tenta(getUrlT(),this.id);
+        tenta(this.urlT,this.id);
     }
 }
