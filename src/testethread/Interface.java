@@ -156,6 +156,13 @@ public class Interface extends javax.swing.JFrame {
             testeLegenda[i] = "http://f.legendas.tv/l/legendas_tv_"+data+".rar";
         }
 
+        txtAno.setText("");
+        txtMes.setText("");
+        txtDia.setText("");
+        txtHora.setText("");
+        txtMinuto.setText("");
+        txtHora.requestFocus();
+        
         for(int j=0;j<60;j+=20){
             for(int i=j;i<j+20;i++){
                 MultiT proc = new MultiT(testeLegenda[i], i+"");
@@ -163,7 +170,7 @@ public class Interface extends javax.swing.JFrame {
             }
             
             try{
-                Thread.sleep(4000);
+                Thread.sleep(2000);
             }catch (InterruptedException ex){
                 Logger.getLogger(MultiT.class.getName()).log(Level.SEVERE, null, ex);
             }

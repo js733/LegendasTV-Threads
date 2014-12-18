@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
  */
 public class MultiT implements Runnable {
     
-    private String urlT, id;
+    private String urlT, id, nome="leg";
 
     public MultiT(String urlT, String id) {
         this.urlT = urlT;
@@ -31,16 +31,20 @@ public class MultiT implements Runnable {
     
     public boolean checaLink(String urlString) throws MalformedURLException, IOException {
 
-        URL u = new URL(urlString); 
-        HttpURLConnection huc =  (HttpURLConnection)  u.openConnection(); 
+        URL u = new URL(urlString);
+        HttpURLConnection huc =  (HttpURLConnection)  u.openConnection();
         huc.setRequestMethod("HEAD");
+        
+   
         huc.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows; U; Windows NT 6.0; en-US; rv:1.9.1.2) Gecko/20090729 Firefox/3.5.2 (.NET CLR 3.5.30729)");
-        huc.connect(); 
+        huc.connect();
         if(huc.getResponseCode() == HttpURLConnection.HTTP_OK){
             System.out.print("\nLink encontrado! Baixando...");
+            nome = u.getFile().substring(3, 29);
             return true;
         }else{
             System.out.print("...");
+            huc.disconnect();
             return false;
         }
     }
@@ -49,12 +53,11 @@ public class MultiT implements Runnable {
 
         System.out.print("\nVerificando o link: " + hue);
         boolean wot=false;
-        String nomeArquivo = "legenda_"+id;
         try{
             wot = checaLink(hue);
         }catch(IOException vish){
            System.out.println(vish);
-           System.exit(1);
+           //System.exit(1);
         }
         if(wot){
             try{
@@ -74,10 +77,10 @@ public class MultiT implements Runnable {
                 
                 byte[] response = out.toByteArray();
 
-                FileOutputStream fos = new FileOutputStream(nomeArquivo);
+                FileOutputStream fos = new FileOutputStream(nome);
                 fos.write(response);
                 fos.close();
-                JOptionPane.showMessageDialog(null,"\nLegenda " + id +" baixada. Obrigado");
+                JOptionPane.showMessageDialog(null,"\nLegenda " + nome + " baixada. Obrigado");
                 
                 //System.exit(0);
             }catch(IOException exce){
