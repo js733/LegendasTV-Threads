@@ -126,7 +126,7 @@ public class Interface extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        ImageIcon icone = new ImageIcon("exemplo.jpg");
+        ImageIcon icone = new ImageIcon(getClass().getClassLoader().getResource("exemplo.jpg"));
         lblExImg.setIcon(icone);
 
         pack();

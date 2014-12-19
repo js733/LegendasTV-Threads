@@ -49,8 +49,6 @@ public class MultiT implements Runnable {
         try{
             wot = checaLink(hue);
         }catch(IOException vish){
-           System.out.println(vish);
-           //System.exit(1);
         }
         if(wot){
             try{

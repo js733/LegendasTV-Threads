@@ -149,7 +149,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lblExImg">
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="ImageIcon icone = new ImageIcon(&quot;exemplo.jpg&quot;);&#xa;lblExImg.setIcon(icone);"/>
+        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="ImageIcon icone = new ImageIcon(getClass().getClassLoader().getResource(&quot;exemplo.jpg&quot;));&#xa;lblExImg.setIcon(icone);"/>
       </AuxValues>
     </Component>
     <Component class="javax.swing.JButton" name="jButBaixar">
